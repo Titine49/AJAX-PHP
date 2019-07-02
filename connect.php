@@ -4,7 +4,7 @@
 define('SERVER' ,"localhost");
 define('USER' ,"root");
 define('PASSWORD' , "");
-define('BASE' ,"cefii");
+define('BASE' ,"cefii"); // A VOIR SI A MODIFIER OU NON
 
 // connection et récupération
 
