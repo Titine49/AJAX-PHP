@@ -15,5 +15,5 @@ else {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 }
 
-if($bdd) echo("Ca marche");
-else echo("cheeee");
+if($bdd) echo("Connected to DB");
+else echo("Error during DB connection");
