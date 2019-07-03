@@ -14,6 +14,3 @@ if(DEBUG) {
 else {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 }
-
-if($bdd) echo("Connected to DB");
-else echo("Error during DB connection");

@@ -12,5 +12,14 @@ function getFoodTruck($connexion){
     }
 }
 
+function getTypes($connexion) {
+    $sql = "SELECT `type` FROM types";
+    $query = $connexion->prepare($sql);
+    if($query->execute()) {
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    else return "ERROR";
+}
+
 
         
