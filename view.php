@@ -12,7 +12,7 @@ function DisplayHome($options)
     }
 
     $content .= "</select>";
-    $content .= "<button id='btnSearch' class='ui green button big' style='margin-top: 32px;'>Trouve moi un Food-Truck !</button>";
+    $content .= "<button id='btnSearch' class='ui green button big' style='margin-top: 32px;'>Trouves moi un Food-Truck !</button>";
 
     $content .= "</div>";
     $content .= "</div>"; // FERMETURE DU SEGMENT DU HEADER (IL NE CONTIENT QUE LA BARRE DE RECHERCHE)
