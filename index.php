@@ -15,11 +15,11 @@ if(isset($_GET["page"]))
     switch($page)
     {
         case "home":
-        DisplayHome($types);
+        $pageContent = DisplayHome($types);
         break;
         
         default:
-        DisplayHome($types);
+        $pageContent = DisplayHome($types);
         break;
     }
 }

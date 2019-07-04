@@ -6,12 +6,12 @@ $(document).ready(function () {
     $("#btnSearch").on("click", function()
     {
         $.post(
-            "search.php",
-            {search: $("#searchBar").val()},
-            function(data)
-            {
-                $("#list").html("");
-                $("#list").append(data);
-            });
+        "search.php",
+        {search: $("#searchBar").val()},
+        function(data)
+        {
+            $("#list").html("");
+            $("#list").append(data);
+        });
     });
 });

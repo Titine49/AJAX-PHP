@@ -34,6 +34,7 @@ if(isset($_POST["search"]))
     if($query->execute()) {
         $query = $query->fetchAll(PDO::FETCH_ASSOC);
         $query = SortQuery($query);
+        //var_dump($query);
         foreach($query as $result)
         {
             echo(
@@ -45,7 +46,7 @@ if(isset($_POST["search"]))
                     <div class='content'>
                         <a class='header'>".utf8_encode($result["name"])."</a>
                         <div class='meta'>
-                            <span>".$result["location"]. " |</span>  <div class='ui star large rating' data-rating='3'></div>
+                            <span>".$result["location"]. " | Cuisine ".utf8_encode($result["type"])." |</span>  <div class='ui star large rating' data-max-rating='5' data-rating='".$result["rating"]."'></div>
                         </div>
                         <div class='description'>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur urna odio, molestie vitae metus quis, laoreet facilisis nisi. Etiam tempus imperdiet sem, eu vestibulum nulla sollicitudin ut. Nulla nunc mi, dignissim eget dolor vitae, bibendum semper lorem. Quisque augue lacus, varius id accumsan ac, consectetur at sapien.</p>
@@ -55,24 +56,42 @@ if(isset($_POST["search"]))
                                 <a href='tel:".$result["phone"]."' class='ui icon button green' data-tooltip='".FormatPhone($result["phone"])."'>
                                     <i class='phone icon'></i>
                                 </a>
-                                <button class='ui icon button blue'>
+                                <button class='ui icon button blue displayMap'>
                                     <i class='map icon'></i>
                                 </button>
                             </div>
                         </div>
-                        <div class='extra'>
-                            Cuisine ".utf8_encode($result["type"])."
-                        </div>
                     </div>
-                </div>
-                "
-            );
+                    </div>
+                    <div class='mapSection ui text color white' id='mapSection".$result["id"]."' style='display: none;'>
+                        MAP
+                    </div>
+            ");
         }
     }
     echo("</div>");
     echo("<script>");
     echo("$('.ui.rating').rating('disable');");
-    echo("</script>");
+    echo("
+        $('.displayMap').on('click', function(e){
+        $('.mapSection').slideUp();
+        $(this).parent().parent().parent().parent().next().toggle();
+        console.log('click');});
+        
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: -25.344, lng: 131.036};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('mapSection'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: uluru, map: map});
+            }
+            ");
+            echo("</script>");
+            echo("<script async defer
+            src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBmY8EDXSnzouNZOc6ahY9P4ZTeAxNw9eU&callback=initMap'>
+            </script>");
 }
 
 function SortQuery($query){
@@ -82,8 +101,8 @@ function SortQuery($query){
         if(isset($array[$i["name"]])){
             $array[$i["name"]]["type"] .= ", ".$i["type"];
         }
-        else
-            $array[$i["name"]] = $i;
+        else{
+            $array[$i["name"]] = $i;}
     }
 
     return $array;

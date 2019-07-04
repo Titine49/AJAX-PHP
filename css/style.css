@@ -3,3 +3,9 @@
     height: 90px;
     background-color: rgb(34, 34, 34);
 }
+
+.mapSection {
+    width: 100%;
+    min-height: 200px;
+    background-color: red;
+}
