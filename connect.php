@@ -1,16 +1,11 @@
 <?php
 define("HOST", "localhost");
-define("DB", "projet");
 define("USERNAME", "root");
-define("PASSWORD", "");
-
+define("PWD", "");
+define("DB", "projet");
 define("DEBUG", true);
 
-$bdd = new PDO("mysql:host=".HOST.";dbname=".DB, USERNAME, PASSWORD);
+$db = new PDO("mysql:host=".HOST.";dbname=".DB, USERNAME, PWD);
 
-if(DEBUG) {
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-}
-else {
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-}
+if(DEBUG) $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+else $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);

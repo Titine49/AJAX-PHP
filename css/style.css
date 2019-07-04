@@ -1,0 +1,14 @@
+body{
+    margin:0;
+    /* background:url("../images/foodt.jpeg") no-repeat; */
+    /* background-size: cover; */
+    /* background: red; */
+    overflow-x: hidden;
+}
+.ui.items:first-child{
+    margin-top: 70px !important;
+}
+.item{
+    padding-top:20px !important;
+    border-top:1px solid rgba(124, 117, 117, 0.2) !important;
+}

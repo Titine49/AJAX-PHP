@@ -1,25 +1,34 @@
 <?php
+include("connect.php");
 include("model.php");
 include("view.php");
-include("connect.php");
+
 include("includes/header.php");
 
-if(isset($_GET["page"])) {
+$pageContent = "";
+
+if(isset($_GET["page"]))
+{
     $page = $_GET["page"];
-    $types = getTypes($bdd);
+    $types = GetFoodTypes($db);
 
-    switch($page){
+    switch($page)
+    {
         case "home":
-            echo displayHome($types);
-            break;
+        DisplayHome($types);
+        break;
+        
         default:
-            echo displayHome($types);
-            break;
+        DisplayHome($types);
+        break;
     }
-} else {
-    $types = getTypes($bdd);
-
-    echo displayHome($types);
 }
+else
+{
+    $types = GetFoodTypes($db);
+    $pageContent = DisplayHome($types);
+}
+
+echo $pageContent;
 
 include("includes/footer.php");
